@@ -18,7 +18,7 @@ router.post('/book', async (req, res) => {
 router.delete('/book/:id', async (req, res) => {
    const { id } = req.params
    const result = await Book.deleteOne({ _id: id })
-   res.json({ msg:'libro eliminado', result})
+   res.json({ msg:'¨Personne suprimer', result})
 })
 
 router.get('/book/:id', async (req, res) => {
@@ -30,7 +30,7 @@ router.get('/book/:id', async (req, res) => {
 router.put('/book', async (req, res) => {
    const {id, nom, prenom, adresse, mdp } = req.body
    const result = await Book.updateOne({_id:id}, {$set:{nom, prenom, adresse, mdp}})
-   res.json({ msg: "libro actualizado", result})
+   res.json({ msg: "personne modifier", result})
 })
 
  module.exports = router
