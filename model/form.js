@@ -5,8 +5,13 @@ const Form = mongoose.model(
   new mongoose.Schema({
     nom: String,
     description: String,
-    user: String
-  })
+    user: String,
+    quest: {
+      question: String,
+      id: String
+    },
+  },
+  { strict: false })
 );
 
 module.exports = Form;

@@ -7,8 +7,9 @@
 
     let APIURL ="http://localhost:3000/book";
 	let APIURL1 ="http://localhost:3000/form";
+	let APIURL2 ="http://localhost:3000/fom";
 	const token =  window.localStorage.getItem('x-access-token');
-
+   
 	
 	let listBooks = [];
 	let listForms = [];
@@ -42,7 +43,8 @@
 	}
 
 	async function getForms(){
-		const res = await fetch(APIURL1);
+		console.log("hello:"+decoded.id)
+		const res = await fetch(APIURL2+`/${decoded.id}`);
 		const forms = await res.json();
 		console.log(forms)
 		listForms = forms;
@@ -118,34 +120,13 @@
 
 
 
-<main>
-	<div class="wrapper">
 
-		<!-- Navbar -->
-		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+	<body class="hold-transition layout-top-nav">
+		<div class="wrapper">
 			<!-- Left navbar links -->
 		
 			  <!-- svelte-ignore a11y-missing-attribute -->
-			  <a class="nav-link" data-widget="pushmenu" role="button"><i class="fas fa-bars" style="color: black"></i></a>
-			   <!-- svelte-ignore a11y-missing-attribute -->
-			   <a class="nav-link" style="color: grey">{decoded.username}</a>
-			<!-- Right navbar links -->
-			<ul class="navbar-nav ml-auto">
-			  <!-- Navbar Search -->
-		
-		
-			  <!-- Messages Dropdown Menu -->
-			
-					<!-- Message End -->
-				
-					<li class="nav-item d-none d-sm-inline-block">
-					  <!-- svelte-ignore a11y-missing-attribute -->
-					  <button  class="btn btn-danger" on:click={() => logout()}><i class="fas fa-sign-out-alt"></i></button>
-				
-					</li>
-			  
-			</ul>
-		  </nav>
+
 
 		<!-- /.navbar -->
 	  
@@ -155,39 +136,29 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 			<!-- Content Header (Page header) -->
-			<div class="content-header">
-			  <div class="container-fluid">
-				<div class="row mb-2">
-				  <div class="col-sm-6">
-					<h1 class="m-0">Dashboard</h1>
-				  </div><!-- /.col -->
-		
-				</div><!-- /.row -->
-			  </div><!-- /.container-fluid -->
-			</div>
+    <div class="content-header">
+
+    </div>
 				  <section class="content">
-			  <div class="container-fluid">
+					<div class="container">
 				<div class="row">
 				  <div class="col-12">
-					<div class="card">
-					  <div class="card-header">
-						<h3 class="card-title">Mes formulaires</h3>
-					  </div>
-					  <!-- /.card-header -->
-		
-					  <!-- /.card-body -->
-					</div>
+			
 					<!-- /.card -->
 		
-					<div class="card">
-		
+					<div class="card card-success card-outline">
+						<div class="card-header">
+							<h5 class="card-title m-0">Mes formulaires</h5>
+						  </div>
 					  <!-- /.card-header -->
 					  <div class="card-body">
+						
 						<table id="example1" class="table table-bordered table-striped">
 						  <thead>
 						  <tr>
 							<th>Nom</th>
 							<th>Description</th>
+							<th>Nbr réponse</th>
 							<th>Action</th>
 						  </tr>
 						  </thead>
@@ -199,7 +170,7 @@
 							<tr>
 							  <td>{form.nom}</td>
 							  <td>{form.description}</td>
-						
+							  <td>12</td>
 							  <td>  <div>
 								<Snackbar variant="stacked" bind:this={leadingSnackbar} on:MDCSnackbar:closed={handleClosedLeading}>
 									<Label>Voulez vous vraiment supprimer cette personne de façon permanente ?</Label>
@@ -231,7 +202,7 @@
 						  <tr>
 							<th>Nom</th>
 							<th>Description</th>
-			
+							<th>Nbr réponse</th>
 							<th>Action</th>
 					
 						  </tr>
@@ -249,7 +220,7 @@
 			  <!-- /.container-fluid -->
 			</section>
 			<section class="content">
-				<div class="container-fluid">
+			  <div class="container">
 				  <div class="row">
 					<div class="col-md-6">
 		  
@@ -302,21 +273,15 @@
 		<!-- /.content-wrapper -->
 
 		<!-- Control Sidebar -->
-		<aside class="control-sidebar control-sidebar-dark">
-		  <!-- Control sidebar content goes here -->
-		  <div class="p-3">
-			<h5>Title</h5>
-			<p>Sidebar content</p>
-		  </div>
-		</aside>
 		<!-- /.control-sidebar -->
 	  
 		<!-- Main Footer -->
-	  </div>
+	 </div>
 
 		<!-- Main content -->
 	
-		<!-- /.content -->
 
-</main>
+	<!-- /.content -->
+
+</body>
 

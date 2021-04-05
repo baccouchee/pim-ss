@@ -12,6 +12,7 @@
 	  var decoded = jwt_decode(token);
 
     let listForms = [];
+    let listQuest  = [];
 
 	 
 
@@ -53,7 +54,10 @@
 		}
 
         listForms = forms;
+        forms.quest = listQuest;
+        console.log(forms.quest)
         console.log(forms)
+  
        
 	}
 
@@ -75,143 +79,100 @@
 		}
 	}
 
-	
-
-
-
+  
   </script>
 
 
 
+<body class="hold-transition layout-top-nav">
+  <div class="wrapper">
     <!-- Left navbar links -->
+  
       <!-- svelte-ignore a11y-missing-attribute -->
 
 
+  <!-- /.navbar -->
+  
+  <!-- Main Sidebar Container -->
 
-<main>
-	<div class="wrapper">
+  <Navbar></Navbar>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+  <div class="content-header">
 
-		<!-- Navbar -->
-		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
-			<!-- Left navbar links -->
-		
-			  <!-- svelte-ignore a11y-missing-attribute -->
-			  <a class="nav-link" data-widget="pushmenu" role="button"><i class="fas fa-bars" style="color: black"></i></a>
-			   <!-- svelte-ignore a11y-missing-attribute -->
-			   <a class="nav-link" style="color: grey">{decoded.username}</a>
-			<!-- Right navbar links -->
-			<ul class="navbar-nav ml-auto">
-			  <!-- Navbar Search -->
-		
-		
-			  <!-- Messages Dropdown Menu -->
-			
-					<!-- Message End -->
-				
-					<li class="nav-item d-none d-sm-inline-block">
-					  <!-- svelte-ignore a11y-missing-attribute -->
-					  <button style="color:red" class="btn btn-danger" on:click={() => logout()}><a style="color: white" >Logout</a></button>
-				
-					</li>
-			  
-			</ul>
-		  </nav>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
 
-		<!-- /.navbar -->
-	  
-		<!-- Main Sidebar Container -->
+          <!-- /.card-header -->
 
-	  <Navbar></Navbar>
-
-      <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-          <div class="container-fluid">
-            <div class="row mb-2">
-              <div class="col-sm-6">
-                <h1 class="m-0">Dashboard</h1>
-              </div><!-- /.col -->
-    
-            </div><!-- /.row -->
-          </div><!-- /.container-fluid -->
+          <!-- /.card-body -->
         </div>
-
-        <div class="container-fluid">
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">Mes formulaires</h3>
-                  </div>
-                  <!-- /.card-header -->
-    
-                  <!-- /.card-body -->
-                </div>
-           
-                <div class="col-md-6">
-                    <!-- general form elements -->
-                    <div class="card card-primary">
-                      <div class="card-header">
-                        <h3 class="card-title">{listForms.nom}</h3>
-                      </div>
-                      <!-- /.card-header -->
-                      <!-- form start -->
-                      
-                      <form>
-                        <div class="card-body">
-                          <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleInputFile">File input</label>
-                            <div class="input-group">
-                              <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                              </div>
-                              <div class="input-group-append">
-                                <span class="input-group-text">Upload</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                          </div>
-                        </div>
-                        <!-- /.card-body -->
-        
-                        <div class="card-footer">
-                          <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                      </form>
-                
-                    </div>
-          
-                    <!-- /.card -->
-
-        
+   
+        <section class="content">
+					<div class="container">
+				<div class="row">
+				  <div class="col-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">{listForms.quest}</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              {#each listQuest as listQuest}
+              <li>{listQuest.question}</li>
+            {/each}
+              <form>
+                <div class="card-body">
+         
+                  <div class="form-group">
+                    
+               
+                    <label for="exampleInputEmail1">test</label>
+             
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                   </div>
        
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+        
+            </div>
+  
+            <!-- /.card -->
 
-                </div>
-                </div>
-                </div>
+
+          </div>
 
 
         </div>
+        </div>
+        </div>
 
-		<!-- Content Wrapper. Contains page content -->
+
+</div>
+   
+    <!-- /.content-header -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <!-- /.control-sidebar -->
+  
+  <!-- Main Footer -->
 
 
-		<!-- Main content -->
-	
-		<!-- /.content -->
+  <!-- Main content -->
 
-</main>
+
+<!-- /.content -->
+
+</body>
 

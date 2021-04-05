@@ -1,59 +1,86 @@
+<script>
+	import { onMount } from 'svelte';
+	import jwt_decode from "jwt-decode";
+  
+  const token =  window.localStorage.getItem('x-access-token');
+  var decoded = jwt_decode(token);
 
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="dist/img/smartstudy.png" alt="AdminLTE Logo" class="brand-image" style="opacity: .8">
-      <span class="brand-text font-weight-light">SMART STUDY</span>
+  async function logout(){
+
+window.localStorage.clear();
+location.href = '/login'
+}
+
+</script>
+
+
+<nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+  <div class="container">
+    <a href="../../index3.html" class="navbar-brand">
+      <img src="../../dist/img/logoo.png" alt="AdminLTE Logo" class="brand-image" >
+      
     </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
+    <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="index3.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">Contact</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
+          <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+            <li><a href="#" class="dropdown-item">Some action </a></li>
+            <li><a href="#" class="dropdown-item">Some other action</a></li>
 
-      <!-- SidebarSearch Form -->
-  
+            <li class="dropdown-divider"></li>
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Starter Pages
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Active Page</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
+            <!-- Level two dropdown-->
+            <li class="dropdown-submenu dropdown-hover">
+              <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
+              <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+                <li>
+                  <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
+                </li>
+
+                <!-- Level three dropdown-->
+                <li class="dropdown-submenu">
+                  <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
+                  <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
+                    <li><a href="#" class="dropdown-item">3rd level</a></li>
+                    <li><a href="#" class="dropdown-item">3rd level</a></li>
+                  </ul>
+                </li>
+                <!-- End Level three -->
+
+                <li><a href="#" class="dropdown-item">level 2</a></li>
+                <li><a href="#" class="dropdown-item">level 2</a></li>
+              </ul>
+            </li>
+            <!-- End Level two -->
+          </ul>
+        </li>
+      </ul>
+
+      <!-- SEARCH FORM -->
+   <!-- Right navbar links -->
+
+   <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+ 
+    <li><a class="nav-link" style="color: grey">{decoded.username}</a></li>
+  <li> <button style="color: grey" class="btn btn-link" on:click={() => logout()}>deconnexion</button></li>
+
+  </ul>
+
     </div>
-    <!-- /.sidebar -->
-  </aside>
+  </div>
+</nav>
+
+
