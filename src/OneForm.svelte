@@ -40,24 +40,21 @@
 		listForms = forms;
 	}
 
+	async function submit(){
+		const res = await fetch(APIURL1+`/${id}`, { method: 'DELETE'});
+	    console.log(await res.json());  
+	    location.href = '/dashboard' 
+	}
+
 	async function getOneForm(){
     console.log(id)
 		const res = await fetch(APIURL1+`/${id}`);
     const forms = await res.json();
-        if(res.status == 200)
-		{
-            console.log("hhhh")
-		}
-		else
-		{
-			console.log("nnnn")
-		}
 
         listForms = forms;
-        forms.quest = listQuest;
+        listQuest = forms.quest;
         console.log(forms.quest)
         console.log(forms)
-  
        
 	}
 
@@ -115,32 +112,39 @@
         <section class="content">
 					<div class="container">
 				<div class="row">
+          
 				  <div class="col-12">
             <!-- general form elements -->
-            <div class="card card-primary">
+            <div class="card card-info">
+              
               <div class="card-header">
-                <h3 class="card-title">{listForms.quest}</h3>
+                <h3 class="card-title">{listForms.nom}</h3>
               </div>
+
+       
+            
+      
+                  <div class="card-body clearfix">
+                    <blockquote class="quote-secondary">
+                      <p>{listForms.description}</p>
+                    </blockquote>
+                  </div>
               <!-- /.card-header -->
               <!-- form start -->
-              {#each listQuest as listQuest}
-              <li>{listQuest.question}</li>
-            {/each}
-              <form>
+
+     
+              <form on:submit|preventDefault={submit}>
                 <div class="card-body">
-         
+                  {#each listQuest as quest}
                   <div class="form-group">
-                    
-               
-                    <label for="exampleInputEmail1">test</label>
-             
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <label for="exampleInputEmail1">{quest.question}</label>
+                    <input type="{quest.type}" class="form-control" id="exampleInputEmail1" placeholder="">
                   </div>
-       
+                  {/each}
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-danger">Delete</button>
                 </div>
               </form>
         

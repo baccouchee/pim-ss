@@ -16,7 +16,7 @@ location.href = '/login'
 
 <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
   <div class="container">
-    <a href="../../index3.html" class="navbar-brand">
+    <a href="/dashboard" class="navbar-brand">
       <img src="../../dist/img/logoo.png" alt="AdminLTE Logo" class="brand-image" >
       
     </a>
@@ -29,10 +29,10 @@ location.href = '/login'
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a href="index3.html" class="nav-link">Home</a>
+          <a href="/dashboard" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">Contact</a>
+          <a href="/cform" class="nav-link">Form</a>
         </li>
         <li class="nav-item dropdown">
           <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>

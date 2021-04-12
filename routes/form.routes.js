@@ -14,6 +14,13 @@ router.get('/form/:id', async (req, res) => {
   res.json(forms)
 })
 
+router.post('/cform', async (req, res) => {
+  const { nom, quest } = req.body
+  const forms = new Form({nom, quest})
+  const result = await forms.save() 
+  res.json({ msg: "Question ajouter", result });
+});
+
 router.delete('/form/:id', async (req, res) => {
   const { id } = req.params
   const result = await Form.deleteOne({ _id: id })
