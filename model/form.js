@@ -7,7 +7,9 @@ const FormsSchema = new Schema(
     user: String,
     quest: {
       question: String,
-    }
+    },
+    img: String,
+      
   },
   { strict: false }
 );

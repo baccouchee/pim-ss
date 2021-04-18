@@ -1,6 +1,6 @@
 <script>	import Navbar from './components/Navbar.svelte'
 	let APIURL1 ="http://localhost:3000/cform";
-  let nom='', question = '', quest = [{question}]
+  let nom='', quest = []
 	async function submit() {
 		let obj = { nom, quest};
 		const res = await fetch(APIURL1, {
@@ -83,17 +83,17 @@ let nbchamps = 1;
                       <input   bind:value={nom} type="text" class="form-control" id="exampleInputEmail1" placeholder="">
                      
                       {#each Array(nbchamps) as _, i}
-                      {#each quest as quest}
-                      <label for="exampleInputEmail1" >Question numero {i+1}</label>
+                   
+                      <label for="exampleInputEmail1" >Question numero</label>
                    <div>
                       <input 
                  
                         class="form-control"
-                        bind:value={quest.question}
+                        bind:value={quest[i]}
                         placeholder="Question"
                       /> <br/>
                     </div>
-                      {/each}
+                
                       {/each}
                     </div>
                   

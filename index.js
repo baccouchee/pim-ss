@@ -10,6 +10,7 @@ app.set('port', process.env.port || 3000 )
 
 // middleware
 app.use(cors())
+app.use('/image', express.static('public/uploads/images'))
 app.use(express.json())
 //rutas 
 app.use(require('./routes/route.book'))
